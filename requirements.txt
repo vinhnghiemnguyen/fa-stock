@@ -2,3 +2,4 @@ flask
 flask-cors
 vnstock
 gunicorn
+pytz
