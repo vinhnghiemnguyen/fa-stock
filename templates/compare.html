@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>So sánh ngành Ngân hàng — vnstock</title>
+    <meta name="description" content="So sánh các chỉ số tài chính của 23 ngân hàng niêm yết tại Việt Nam" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/compare.css" />
+</head>
+
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container cmp-container">
+
+        <!-- Nav -->
+        <nav class="cmp-nav">
+            <a href="/" class="cmp-back">← Tra cứu cổ phiếu</a>
+            <div class="header-badge" style="margin:0">
+                <span class="dot"></span>Powered by vnstock · Dữ liệu thực
+            </div>
+        </nav>
+
+        <!-- Page header -->
+        <header class="cmp-header">
+            <h1>🏦 So Sánh Ngành Ngân Hàng</h1>
+            <p>23 ngân hàng niêm yết · dữ liệu năm gần nhất từ VCI</p>
+        </header>
+
+        <!-- Controls -->
+        <div class="cmp-controls">
+            <div class="cmp-legend">
+                <span class="legend-best">▲ Tốt nhất</span>
+                <span class="legend-worst">▼ Tệ nhất</span>
+                <span style="color:var(--text-secondary);font-size:12px">Click tiêu đề cột để sắp xếp</span>
+            </div>
+            <button id="cmp-refresh" class="cmp-refresh-btn">↻ Tải lại</button>
+        </div>
+
+        <!-- Loading -->
+        <div id="cmp-loading">
+            <div class="spinner"></div>
+            <p>Đang tải dữ liệu từ 23 ngân hàng… (~15-30 giây)</p>
+        </div>
+
+        <!-- Error -->
+        <div id="cmp-error" style="display:none"></div>
+
+        <!-- Table wrapper -->
+        <div id="cmp-table-wrap" style="display:none">
+            <div class="cmp-scroll-hint">← cuộn ngang →</div>
+            <div class="cmp-table-outer">
+                <table class="cmp-table" id="cmp-table">
+                    <thead id="cmp-thead"></thead>
+                    <tbody id="cmp-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="footer" style="margin-top:40px">
+            <p>Dữ liệu do <a href="https://github.com/thinh-vu/vnstock" target="_blank">vnstock</a> cung cấp · Chỉ mang
+                tính tham khảo</p>
+        </footer>
+    </div>
+
+    <script src="/static/compare.js"></script>
+</body>
+
+</html>

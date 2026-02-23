@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tra cứu thông tin cổ phiếu</title>
+  <meta name="description" content="Tra cứu thông tin công ty niêm yết trên thị trường chứng khoán Việt Nam" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <!-- Background decoration -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- Top nav -->
+    <nav class="top-nav">
+      <a href="/compare/banking" class="top-nav-link">🏦 So sánh Ngân hàng</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-badge">
+        <span class="dot"></span>
+        Powered by vnstock · Dữ liệu thực
+      </div>
+      <h1>Tra Cứu Thông Tin<br>Cổ Phiếu</h1>
+      <p>Nhập mã cổ phiếu để xem thông tin chi tiết về công ty niêm yết tại Việt Nam</p>
+    </header>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="symbol-input" placeholder="Nhập mã CK (VD: VCB, ACB, VNM...)" autocomplete="off"
+          spellcheck="false" maxlength="10" />
+      </div>
+      <button id="search-btn">Tra cứu</button>
+    </div>
+
+    <!-- Quick picks -->
+    <div class="quick-picks">
+      <span>Gợi ý:</span>
+      <span class="pill" data-symbol="VCB">VCB</span>
+      <span class="pill" data-symbol="ACB">ACB</span>
+      <span class="pill" data-symbol="VNM">VNM</span>
+      <span class="pill" data-symbol="HPG">HPG</span>
+      <span class="pill" data-symbol="FPT">FPT</span>
+      <span class="pill" data-symbol="MSN">MSN</span>
+      <span class="pill" data-symbol="TCB">TCB</span>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Đang tải dữ liệu…</p>
+    </div>
+
+    <!-- Error -->
+    <div id="error-msg"></div>
+
+    <!-- Result: company header + unified tabs -->
+    <div id="result">
+      <!-- Company header (always visible) -->
+      <div class="company-header-card">
+        <div class="company-logo-placeholder" id="company-initials">?</div>
+        <div class="company-title">
+          <h2 id="company-full-name">—</h2>
+          <span class="ticker-badge" id="badge-ticker">—</span>
+          <span class="exchange-badge" id="badge-exchange"></span>
+        </div>
+      </div>
+
+      <!-- Unified tab bar: Overview first, then detail tabs -->
+      <div class="detail-tabs" id="detail-tabs">
+        <button class="detail-tab-btn active" data-tab="overview">🏠 Tổng quan</button>
+        <button class="detail-tab-btn" data-tab="officers">👤 Ban lãnh đạo</button>
+        <button class="detail-tab-btn" data-tab="shareholders">🏛️ Cổ đông lớn</button>
+        <button class="detail-tab-btn" data-tab="subsidiaries">🏢 Công ty con</button>
+        <button class="detail-tab-btn" data-tab="affiliate">🤝 Liên kết</button>
+        <button class="detail-tab-btn" data-tab="news">📰 Tin tức</button>
+        <button class="detail-tab-btn" data-tab="events">📅 Sự kiện</button>
+      </div>
+
+      <!-- Tổng quan tab: info cards grid -->
+      <div id="info-grid" class="info-grid"></div>
+
+      <!-- Detail tabs: loading / error / content -->
+      <div id="detail-loading" style="display:none">
+        <div class="spinner"></div>
+        <p style="color:var(--text-secondary)">Đang tải…</p>
+      </div>
+      <div id="detail-error"></div>
+      <div id="detail-content" style="display:none"></div>
+    </div>
+
+    <!-- Financial Reports Section -->
+    <div id="finance-section">
+      <div class="section-title"><span>📊</span> Báo cáo tài chính</div>
+
+      <div class="finance-controls">
+        <!-- Period toggle -->
+        <div class="toggle-group" id="period-toggle">
+          <button class="toggle-btn active" data-period="year">Theo năm</button>
+          <button class="toggle-btn" data-period="quarter">Theo quý</button>
+        </div>
+        <!-- Report type tabs -->
+        <div class="report-tabs" id="report-tabs">
+          <button class="tab-btn active" data-report="bs">🏦 Cân đối kế toán</button>
+          <button class="tab-btn" data-report="is">📈 Kết quả kinh doanh</button>
+          <button class="tab-btn" data-report="cf">💰 Dòng tiền</button>
+          <button class="tab-btn" data-report="ratio">📐 Chỉ số tài chính</button>
+        </div>
+      </div>
+
+      <div id="finance-error"></div>
+      <div id="finance-loading">
+        <div class="spinner"></div>
+        <p style="color:var(--text-secondary)">Đang tải báo cáo tài chính…</p>
+      </div>
+      <div class="finance-table-wrap" id="finance-table-wrap" style="display:none">
+        <table class="finance-table" id="finance-table"></table>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Dữ liệu do <a href="https://github.com/thinh-vu/vnstock" target="_blank">vnstock</a> cung cấp · Chỉ mang tính
+        tham khảo</p>
+    </footer>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>

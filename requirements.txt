@@ -1,0 +1,4 @@
+flask
+flask-cors
+vnstock
+gunicorn
